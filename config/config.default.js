@@ -113,7 +113,14 @@ var config = {
   //   }
   // ]
 
-  table_of_contents: false
+  table_of_contents: true,
+  table_of_contents_options: {
+    append: 'Table of contents appendix',
+    maxdepth: 6,
+    firsth1: true,
+  },
+  menu_on_pages: false,
+  menu_on_page_collapsible: false
 
 };
 config.public_dir = path.join(__dirname, '..', 'themes', config.theme_name, 'public');
