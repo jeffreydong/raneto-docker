@@ -27,7 +27,7 @@ docker pull appsecco/raneto
 - Clone the repostiory for sample configuration and content
 
 ```
-git clone https://github.com/appsecco/raneto-docker.git
+git clone https://github.com/jeffreydong/raneto-docker.git
 
 cd raneto-docker
 ```
@@ -50,8 +50,29 @@ docker run -v `pwd`/content/:/data/content/ -v `pwd`/config/config.default.js:/o
 - To add custom theme, we have to mount the folder inside container and update configuration file. For example `theme` folder in current working directory
 
 ```
+docker run \
+    -v `pwd`/config/config.default.js:/opt/raneto/example/config.default.js \
+    -v `pwd`/theme/:/opt/raneto/themes/default/ \
+    -v `pwd`/../../OneDrive/docs.md/:/data/content/ \
+    -p 3000:3000 -d appsecco/raneto 
+```
+
+```
+docker run \
+    -v `pwd`/config/config.default.js:/opt/raneto/example/config.default.js \
+    -v `pwd`/theme/:/data/theme/ \
+    -v `pwd`/content/:/data/content/ \
+    -p 3000:3000 -d appsecco/raneto 
+```
+
+```
 docker run -v `pwd`/content/:/data/content/ -v `pwd`/config/config.default.js:/opt/raneto/example/config.default.js -v `pwd`/theme/:/data/theme/ -p 3000:3000 -d appsecco/raneto
 ```
+
+```
+docker run -v `pwd`/content/:/data/content/ -v `pwd`/config/config.default.js:/opt/raneto/example/config.default.js -v `pwd`/theme/:/opt/raneto/themes/default/ -p 3000:3000 -d appsecco/raneto
+```
+
 
 ---
 
